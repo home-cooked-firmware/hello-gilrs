@@ -1,4 +1,4 @@
-use gilrs::{Gilrs, Button, Event};
+use gilrs::{Gilrs, Event};
 
 fn main() {
     let mut gilrs = Gilrs::new().unwrap();
@@ -7,12 +7,9 @@ fn main() {
         println!("{} is {:?}", gamepad.name(), gamepad.power_info());
     }
 
-    let mut active_gamepad = None;
-
     loop {
         while let Some(Event { id, event, time, .. }) = gilrs.next_event() {
             println!("{:?} New event from {}: {:?}", time, id, event);
-            active_gamepad = Some(id);
         }
     }
 }
